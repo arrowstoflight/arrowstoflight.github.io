@@ -180,6 +180,26 @@
       color: #0ff;
     }
 
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: #ccc;
+    }
+
+    .skill-item i {
+      font-size: 40px;
+      color: #0ff;
+    }
+
     footer {
       text-align: center;
       padding: 30px;
@@ -194,6 +214,14 @@
 
     a:hover {
       text-decoration: underline;
+    }
+
+    iframe {
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+      width: 100%;
+      height: 315px;
     }
   </style>
   <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
@@ -221,6 +249,8 @@
   <main>
     <section>
       <h2>Experience</h2>
+
+      <!-- NASA -->
       <div class="job">
         <div class="logo"><img src="https://gpm.nasa.gov/sites/default/files/NASA-Logo-Large.jpg" alt="NASA Logo" /></div>
         <div class="details">
@@ -230,6 +260,10 @@
         </div>
       </div>
 
+      <!-- Embedded video -->
+      <iframe src="https://www.youtube.com/embed/zctTKdQcmVA?si=o4W4oS9tne_uwTey" title="NASA Artemis Video" allowfullscreen></iframe>
+
+      <!-- ULA -->
       <div class="job">
         <div class="logo"><img src="https://i0.wp.com/spacenews.com/wp-content/uploads/2022/08/United_Launch_Alliance-Logo.wine_.png?fit=3000%2C2000&ssl=1" alt="ULA Logo" /></div>
         <div class="details">
@@ -247,16 +281,50 @@
     </section>
 
     <section>
-      <h2>Education</h2>
-      <p>B.S. in Computer Science — University of Central Florida, 2020</p>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item"><i class="devicon-cplusplus-plain"></i><span>C++</span></div>
+        <div class="skill-item"><i class="devicon-c-original"></i><span>C</span></div>
+        <div class="skill-item"><i class="devicon-csharp-plain"></i><span>C#</span></div>
+        <div class="skill-item"><i class="devicon-python-plain"></i><span>Python</span></div>
+        <div class="skill-item"><i class="devicon-java-plain"></i><span>Java</span></div>
+        <div class="skill-item"><i class="devicon-react-original"></i><span>React</span></div>
+        <div class="skill-item"><i class="devicon-qt-original"></i><span>Qt</span></div>
+        <div class="skill-item"><i class="devicon-github-original"></i><span>GitHub</span></div>
+        <div class="skill-item"><i class="devicon-linux-plain"></i><span>Linux</span></div>
+      </div>
     </section>
 
     <section>
-      <h2>Awards</h2>
-      <ul class="awards-list">
-        <li><a href="https://www.nasa.gov/missions/artemis/artemis-i-team-receives-laurels-award-for-team-achievement/">IAA 2023 Laurels for Team Achievement Award</a></li>
-      </ul>
+  	<h2>Education</h2>
+    <div class="job">
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_University_of_Central_Florida.svg/1200px-Seal_of_the_University_of_Central_Florida.svg.png" alt="UCF Logo" />
+    </div>
+    <div class="details">
+      <h3>University of Central Florida</h3>
+      <p>B.S. in Computer Science — 2020</p>
+    </div>
+    </div>
     </section>
+
+<section>
+  <h2>Awards</h2>
+  <div class="job">
+    <div class="logo">
+      <img src="https://iaaspace.org/wp-content/uploads/2024/11/IAA-LOGO-PIONEER-LightBlue-2.png" alt="IAA" />
+    </div>
+    <div class="details">
+      <h3>IAA 2023 Laurels for Team Achievement Award</h3>
+      <p>
+        <a href="https://www.nasa.gov/missions/artemis/artemis-i-team-receives-laurels-award-for-team-achievement/">
+          Artemis I Team — NASA
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
   </main>
 
   <footer>
@@ -278,22 +346,21 @@
 
     // Orbit icons around name and keep them upright
     const icons = document.querySelectorAll('#skills-circle i');
-  const radius = 269;
-  const total = icons.length;
-  const rotationDuration = 20000; // 20s for a full orbit
+    const radius = 269;
+    const total = icons.length;
+    const rotationDuration = 20000; // 20s for a full orbit
 
-  function updateIcons() {
-    const now = performance.now();
-    const rotation = (now % rotationDuration) / rotationDuration * 2 * Math.PI; // circle rotation
-
-    icons.forEach((icon, index) => {
-      const angle = (2 * Math.PI / total) * index + rotation;
-      const x = radius * Math.cos(angle);
-      const y = radius * Math.sin(angle);
-      icon.style.left = `calc(50% + ${x}px - 25px)`;
-      icon.style.top = `calc(50% + ${y}px - 25px)`;
-      icon.style.transform = `rotate(0deg)`; // icons stay upright
-    });
+    function updateIcons() {
+      const now = performance.now();
+      const rotation = (now % rotationDuration) / rotationDuration * 2 * Math.PI;
+      icons.forEach((icon, index) => {
+        const angle = (2 * Math.PI / total) * index + rotation;
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
+        icon.style.left = `calc(50% + ${x}px - 25px)`;
+        icon.style.top = `calc(50% + ${y}px - 25px)`;
+        icon.style.transform = `rotate(0deg)`;
+      });
       requestAnimationFrame(updateIcons);
     }
 
