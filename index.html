@@ -55,18 +55,12 @@
     }
 
     main {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 0 20px 80px;
-    }
-
-    @media (max-width: 768px) {
-      main {
-        grid-template-columns: 1fr;
-      }
     }
 
     section {
@@ -148,18 +142,18 @@
     <section>
       <h2>Experience</h2>
       <div class="job">
-        <div class="logo"><img src="https://gpm.nasa.gov/sites/default/files/document_files/NASA-Logo-Large.png" alt="NASA Meatball" /></div>
+        <div class="logo"><img src="https://gpm.nasa.gov/sites/default/files/NASA-Logo-Large.jpg" alt="NASA Meatball" /></div>
         <div class="details">
-          <h3>Astrion - NASA Comet Contract</h3>
+          <h3>Lockheed Martin</h3>
           <p>Software Engineer — 2021–Present</p>
           <p>Developed embedded systems and simulation software for defense projects.</p>
         </div>
       </div>
 
       <div class="job">
-        <div class="logo"><img src="logo2.png" alt="Company 2 Logo" /></div>
+        <div class="logo"><img src="https://i0.wp.com/spacenews.com/wp-content/uploads/2022/08/United_Launch_Alliance-Logo.wine_.png?fit=3000%2C2000&ssl=1" alt="United Launch Alliance" /></div>
         <div class="details">
-          <h3>Orbital Dynamics Inc.</h3>
+          <h3>United Launch Alliance</h3>
           <p>Systems Developer — 2018–2021</p>
           <p>Built automation tools and analytics for aerospace mission operations.</p>
         </div>
