@@ -39,7 +39,7 @@
 
     header {
       text-align: center;
-      padding: 120px 20px 60px;
+      padding: 180px 20px 120px; /* increased top and bottom padding */
       position: relative;
     }
 
@@ -59,17 +59,14 @@
       z-index: 2;
     }
 
-    /* Skill icons orbiting around name, always upright */
     .skills-circle {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 300px;
-      height: 300px;
-      margin-top: -150px;
-      margin-left: -150px;
-      border-radius: 50%;
-      animation: rotate 20s linear infinite;
+      width: 400px; /* increased diameter */
+      height: 400px;
+      margin-top: -200px;
+      margin-left: -200px;
     }
 
     .skills-circle i {
@@ -84,11 +81,7 @@
       justify-content: center;
       box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
       position: absolute;
-    }
-
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      transform-origin: 50% 200px;
     }
 
     main {
@@ -97,7 +90,7 @@
       gap: 30px;
       max-width: 800px;
       margin: 0 auto;
-      padding: 0 20px 80px;
+      padding: 0 20px 120px; /* extra bottom padding */
     }
 
     section {
@@ -266,17 +259,25 @@
       starContainer.appendChild(star);
     }
 
-    // Orbit icons around name, always facing user
+    // Orbit icons around name, evenly spaced and upright
     const icons = document.querySelectorAll('#skills-circle i');
-    const radius = 150;
+    const radius = 200; // increased radius
+    const centerX = 200;
+    const centerY = 200;
     const total = icons.length;
 
     icons.forEach((icon, index) => {
       const angle = (2 * Math.PI / total) * index;
-      const x = radius * Math.cos(angle);
-      const y = radius * Math.sin(angle);
-      icon.style.left = `calc(50% + ${x}px - 25px)`; // center offset
-      icon.style.top = `calc(50% + ${y}px - 25px)`;
+      const x = centerX + radius * Math.cos(angle) - 25;
+      const y = centerY + radius * Math.sin(angle) - 25;
+      icon.style.left = `${x}px`;
+      icon.style.top = `${y}px`;
+
+      let deg = 0;
+      setInterval(() => {
+        deg = (deg + 1) % 360;
+        icon.style.transform = `rotate(${-deg}deg) translate(${radius}px) rotate(${deg}deg)`;
+      }, 50);
     });
   </script>
 </body>
