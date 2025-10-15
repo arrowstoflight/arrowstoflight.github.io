@@ -14,7 +14,6 @@
       position: relative;
     }
 
-    /* Animated star background */
     .stars {
       position: fixed;
       top: 0;
@@ -60,7 +59,7 @@
       z-index: 2;
     }
 
-    /* Skill icons orbiting around name */
+    /* Skill icons orbiting around name, always upright */
     .skills-circle {
       position: absolute;
       top: 50%;
@@ -85,9 +84,6 @@
       justify-content: center;
       box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform-origin: 0 -150px;
     }
 
     @keyframes rotate {
@@ -270,12 +266,17 @@
       starContainer.appendChild(star);
     }
 
-    // Position icons evenly around circle and keep them upright
-    const icons = document.querySelectorAll('.skills-circle i');
+    // Orbit icons around name, always facing user
+    const icons = document.querySelectorAll('#skills-circle i');
+    const radius = 150;
     const total = icons.length;
+
     icons.forEach((icon, index) => {
-      const angle = (360 / total) * index;
-      icon.style.transform = `rotate(${angle}deg) translate(0, -150px) rotate(${-angle}deg)`;
+      const angle = (2 * Math.PI / total) * index;
+      const x = radius * Math.cos(angle);
+      const y = radius * Math.sin(angle);
+      icon.style.left = `calc(50% + ${x}px - 25px)`; // center offset
+      icon.style.top = `calc(50% + ${y}px - 25px)`;
     });
   </script>
 </body>
