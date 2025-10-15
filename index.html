@@ -59,6 +59,7 @@
       z-index: 2;
     }
 
+    /* Skill icons orbiting around name, always upright */
     .skills-circle {
       position: absolute;
       top: 50%;
@@ -67,6 +68,8 @@
       height: 300px;
       margin-top: -150px;
       margin-left: -150px;
+      border-radius: 50%;
+      animation: rotate 20s linear infinite;
     }
 
     .skills-circle i {
@@ -81,7 +84,11 @@
       justify-content: center;
       box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
       position: absolute;
-      transform-origin: 50% 200px;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     main {
@@ -259,26 +266,17 @@
       starContainer.appendChild(star);
     }
 
-    // Orbit icons around name, evenly spaced and upright
+    // Orbit icons around name, always facing user
     const icons = document.querySelectorAll('#skills-circle i');
     const radius = 150;
-    const centerX = 150; // half of circle width
-    const centerY = 150;
     const total = icons.length;
 
     icons.forEach((icon, index) => {
       const angle = (2 * Math.PI / total) * index;
-      const x = centerX + radius * Math.cos(angle) - 25; // icon offset
-      const y = centerY + radius * Math.sin(angle) - 25;
-      icon.style.left = `${x}px`;
-      icon.style.top = `${y}px`;
-
-      // Animate rotation around center
-      let deg = 0;
-      setInterval(() => {
-        deg = (deg + 1) % 360;
-        icon.style.transform = `rotate(${-deg}deg) translate(${radius}px) rotate(${deg}deg)`;
-      }, 50); // speed of orbit
+      const x = radius * Math.cos(angle);
+      const y = radius * Math.sin(angle);
+      icon.style.left = `calc(50% + ${x}px - 25px)`; // center offset
+      icon.style.top = `calc(50% + ${y}px - 25px)`;
     });
   </script>
 </body>
