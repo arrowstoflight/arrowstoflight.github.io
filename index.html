@@ -12,6 +12,7 @@
       background: radial-gradient(circle at top, #0a0a1a 0%, #000 100%);
       overflow-x: hidden;
       position: relative;
+      scroll-behavior: smooth;
     }
 
     .stars {
@@ -38,38 +39,44 @@
     }
 
     header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 120px 20px 60px;
       position: relative;
+      z-index: 1;
     }
 
     header h1 {
-      font-size: 2.8rem;
+      font-size: 4rem;
       margin: 0;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       position: relative;
       z-index: 2;
     }
 
     header p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #ccc;
       margin-top: 10px;
       position: relative;
       z-index: 2;
     }
 
-    /* Skill icons orbiting around name, always upright */
+    /* Skill icons orbiting around name */
     .skills-circle {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 300px;
-      height: 300px;
-      margin-top: -150px;
-      margin-left: -150px;
+      width: 350px;
+      height: 350px;
+      margin-top: -175px;
+      margin-left: -175px;
       border-radius: 50%;
       animation: rotate 20s linear infinite;
+      z-index: 0;
     }
 
     .skills-circle i {
@@ -95,9 +102,9 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 0 20px 80px;
+      padding: 40px 20px 80px;
     }
 
     section {
@@ -184,6 +191,15 @@
       font-size: 0.9rem;
       color: #777;
     }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
   <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
@@ -211,7 +227,7 @@
     <section>
       <h2>Experience</h2>
       <div class="job">
-        <div class="logo"><img src="https://gpm.nasa.gov/sites/default/files/NASA-Logo-Large.jpg" alt="Company 1 Logo" /></div>
+        <div class="logo"><img src="https://gpm.nasa.gov/sites/default/files/NASA-Logo-Large.jpg" alt="NASA Logo" /></div>
         <div class="details">
           <h3>Astrion - NASA's Artemis Program</h3>
           <p>Software Engineer — 2020–Present</p>
@@ -220,24 +236,24 @@
       </div>
 
       <div class="job">
-        <div class="logo"><img src="https://i0.wp.com/spacenews.com/wp-content/uploads/2022/08/United_Launch_Alliance-Logo.wine_.png?fit=3000%2C2000&ssl=1" alt="Company 2 Logo" /></div>
+        <div class="logo"><img src="https://i0.wp.com/spacenews.com/wp-content/uploads/2022/08/United_Launch_Alliance-Logo.wine_.png?fit=3000%2C2000&ssl=1" alt="ULA Logo" /></div>
         <div class="details">
           <h3>United Launch Alliance</h3>
-          <p>Software Engineer Student Inter — 2019–2020</p>
-          <p>Gathered requirements, planned, designed, developed, tested, and deployed a software system to demonstrate the capabilities of augmented reality using Unity and C# as a business solution to the United Launch Alliance</p>
+          <p>Software Engineer Student Intern — 2019–2020</p>
+          <p>Gathered requirements, planned, designed, developed, tested, and deployed a software system to demonstrate the capabilities of augmented reality using Unity and C#</p>
         </div>
       </div>
     </section>
 
     <section>
       <h2>Projects</h2>
-      <p><strong>Titan Quest:</strong> Created a text based adventure with a UI via Unity and C#</p>
-      <p><strong>The Light Within:</strong> Created a 2D Pixel-Platformer Video game in Unity using C#</p>
+      <p><strong>Titan Quest:</strong> Created a text-based adventure with a UI via Unity and C#</p>
+      <p><strong>The Light Within:</strong> Created a 2D Pixel-Platformer video game in Unity using C#</p>
     </section>
 
     <section>
       <h2>Education</h2>
-      <p>B.S. in Computer Sceince — University of Central Florida, 2020</p>
+      <p>B.S. in Computer Science — University of Central Florida, 2020</p>
     </section>
 
     <section>
@@ -249,7 +265,7 @@
   </main>
 
   <footer>
-    <p>© 2025 Dustin White | <a href="#" style="color:#0ff; text-decoration:none;">LinkedIn</a> | <a href="#" style="color:#0ff; text-decoration:none;">GitHub</a></p>
+    <p>© 2025 Dustin White | <a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
   </footer>
 
   <script>
@@ -264,7 +280,7 @@
       starContainer.appendChild(star);
     }
 
-    // Orbit icons around name, always facing user
+    // Orbit icons around name
     const icons = document.querySelectorAll('#skills-circle i');
     const radius = 150;
     const total = icons.length;
@@ -273,20 +289,9 @@
       const angle = (2 * Math.PI / total) * index;
       const x = radius * Math.cos(angle) * 1.3;
       const y = radius * Math.sin(angle) * 1.3;
-      icon.style.left = `calc(50% + ${x}px - 25px)`; // center offset
+      icon.style.left = `calc(50% + ${x}px - 25px)`;
       icon.style.top = `calc(50% + ${y}px - 25px)`;
     });
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
