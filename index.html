@@ -67,54 +67,51 @@
     }
 
     section {
-      max-width: 900px;
+      max-width: 800px;
       margin: 50px auto;
       padding: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
       box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
     }
 
     h3 {
       color: #00bfff;
       margin-bottom: 10px;
+      text-align: center;
     }
 
-    .experience {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 8px 0;
+      line-height: 1.5;
     }
 
     .job {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      margin-bottom: 25px;
+      text-align: left;
     }
 
     .job-logo {
-      width: 80px;
-      height: 80px;
+      width: 60px;
+      height: 60px;
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+      margin-bottom: 10px;
     }
 
     .job-logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-    }
-
-    .job-details {
-      flex: 1;
-      min-width: 250px;
     }
 
     footer {
@@ -134,47 +131,36 @@
 
   <section>
     <h3>Experience</h3>
-    <div class="experience">
-      <div class="job">
-        <div class="job-logo">
-          <img src="company1-logo.png" alt="Company 1 Logo">
-        </div>
-        <div class="job-details">
-          <h4>Lockheed Martin</h4>
-          <p>Software Engineer • 2022 – Present</p>
-          <p>Developed real-time simulation tools and optimized aerospace data systems using C++ and Python.</p>
-        </div>
+    <div class="job">
+      <div class="job-logo">
+        <img src="company1-logo.png" alt="Lockheed Martin Logo">
       </div>
+      <strong>Lockheed Martin</strong> — Software Engineer (2022 – Present)<br>
+      Developed real-time simulation tools and optimized aerospace data systems using C++ and Python.
+    </div>
 
-      <div class="job">
-        <div class="job-logo">
-          <img src="company2-logo.png" alt="Company 2 Logo">
-        </div>
-        <div class="job-details">
-          <h4>TechNova Labs</h4>
-          <p>Full Stack Developer • 2019 – 2022</p>
-          <p>Built and maintained scalable web applications with React and Node.js, improving system uptime by 25%.</p>
-        </div>
+    <div class="job">
+      <div class="job-logo">
+        <img src="company2-logo.png" alt="TechNova Labs Logo">
       </div>
+      <strong>TechNova Labs</strong> — Full Stack Developer (2019 – 2022)<br>
+      Built and maintained scalable web applications with React and Node.js, improving system uptime by 25%.
+    </div>
 
-      <div class="job">
-        <div class="job-logo">
-          <img src="company3-logo.png" alt="Company 3 Logo">
-        </div>
-        <div class="job-details">
-          <h4>Galactic Innovations</h4>
-          <p>Intern • 2018 – 2019</p>
-          <p>Assisted in prototyping embedded systems and helped automate testing workflows in C and Python.</p>
-        </div>
+    <div class="job">
+      <div class="job-logo">
+        <img src="company3-logo.png" alt="Galactic Innovations Logo">
       </div>
+      <strong>Galactic Innovations</strong> — Intern (2018 – 2019)<br>
+      Assisted in prototyping embedded systems and helped automate testing workflows in C and Python.
     </div>
   </section>
 
   <section>
     <h3>Projects</h3>
     <ul>
-      <li>Orbital Path Simulator — Built a 3D orbital physics engine using WebGL and Three.js</li>
-      <li>FleetAI — Created a fleet management dashboard using Python Flask and React</li>
+      <li><strong>Orbital Path Simulator</strong> — Built a 3D orbital physics engine using WebGL and Three.js.</li>
+      <li><strong>FleetAI</strong> — Created a fleet management dashboard using Python Flask and React.</li>
     </ul>
   </section>
 
