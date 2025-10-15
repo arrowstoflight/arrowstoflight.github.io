@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dustin White - Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Space Resume Portfolio</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at 20% 20%, #0a0f24 0%, #000000 100%);
-      color: #e0e0e0;
+      color: #fff;
+      background: radial-gradient(circle at top, #0a0a1a 0%, #000 100%);
       overflow-x: hidden;
+      position: relative;
     }
 
+    /* Animated star background */
     .stars {
       position: fixed;
       top: 0;
@@ -23,15 +23,14 @@
       height: 100%;
       background: transparent;
       z-index: -1;
-      overflow: hidden;
     }
 
-    .stars span {
+    .star {
       position: absolute;
-      background: white;
       border-radius: 50%;
-      opacity: 0.8;
-      animation: twinkle 3s infinite ease-in-out;
+      background: white;
+      opacity: 0.7;
+      animation: twinkle 4s infinite ease-in-out;
     }
 
     @keyframes twinkle {
@@ -41,69 +40,75 @@
 
     header {
       text-align: center;
-      padding: 80px 20px 40px;
+      padding: 60px 20px 40px;
     }
 
-    h1 {
-      font-size: 3rem;
-      color: #00bfff;
-      margin-bottom: 0.5rem;
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
       letter-spacing: 1px;
     }
 
-    h2 {
-      font-size: 1.3rem;
-      color: #a0d8ff;
-      font-weight: 300;
+    header p {
+      font-size: 1.1rem;
+      color: #ccc;
     }
 
     main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 50px;
-      padding: 0 20px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+      }
     }
 
     section {
-      width: 100%;
-      max-width: 900px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 0 30px rgba(0, 191, 255, 0.2);
+      background: rgba(20, 20, 30, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    h3 {
-      color: #00bfff;
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    }
+
+    h2 {
+      border-bottom: 2px solid rgba(0, 255, 255, 0.4);
+      padding-bottom: 10px;
       margin-bottom: 20px;
+      color: #0ff;
       text-transform: uppercase;
-      font-size: 1.1rem;
-      letter-spacing: 2px;
-      border-left: 4px solid #00bfff;
-      padding-left: 10px;
+      font-size: 1.3rem;
     }
 
-    .experience-item {
+    .job {
       display: flex;
       align-items: center;
-      gap: 20px;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
+      margin-bottom: 20px;
     }
 
     .logo {
-      width: 70px;
-      height: 70px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
       overflow: hidden;
       flex-shrink: 0;
-      box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+      margin-right: 15px;
+      background-color: #000; /* Ensures black background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .logo img {
@@ -112,135 +117,88 @@
       object-fit: contain;
     }
 
-    .details {
-      flex: 1;
-    }
-
-    .details h4 {
+    .details h3 {
       margin: 0;
-      color: #fff;
       font-size: 1.1rem;
     }
 
     .details p {
       margin: 5px 0;
-      font-size: 0.95rem;
-      color: #b0c4de;
-      line-height: 1.5;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    li {
-      margin: 10px 0;
-      padding-left: 20px;
-      position: relative;
-    }
-
-    li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: #00bfff;
+      color: #ccc;
+      font-size: 0.9rem;
     }
 
     footer {
       text-align: center;
-      color: #8cbbe9;
+      padding: 30px;
       font-size: 0.9rem;
-      padding: 30px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    a {
-      color: #00bfff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <div class="stars"></div>
+  <div class="stars" id="stars"></div>
 
   <header>
     <h1>Dustin White</h1>
-    <h2>Software Engineer • Innovator • Problem Solver</h2>
+    <p>Software Engineer | Problem Solver | Innovator</p>
   </header>
 
   <main>
     <section>
-      <h3>Experience</h3>
-      <div class="experience-item">
-        <div class="logo"><img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGh6am96ZTg4Yzc5Y3E3ejcyN2tzYmswYzd6MGE3M2w0NnVraTkyZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SVlsaKCFMcay4KZHzg/giphy.gif" alt="NASA"></div>
+      <h2>Experience</h2>
+      <div class="job">
+        <div class="logo"><img src="https://gpm.nasa.gov/sites/default/files/document_files/NASA-Logo-Large.png" alt="NASA Meatball" /></div>
         <div class="details">
-          <h4>Astrion - NASA Comet Contract</h4>
-          <p>Software Engineer • 2022 – Present</p>
-          <p>Developed simulation tools and optimized aerospace data systems using C++ and Python.</p>
+          <h3>Astrion - NASA Comet Contract</h3>
+          <p>Software Engineer — 2021–Present</p>
+          <p>Developed embedded systems and simulation software for defense projects.</p>
         </div>
       </div>
 
-      <div class="experience-item">
-        <div class="logo"><img src="company2-logo.png" alt="TechNova Labs"></div>
+      <div class="job">
+        <div class="logo"><img src="logo2.png" alt="Company 2 Logo" /></div>
         <div class="details">
-          <h4>TechNova Labs</h4>
-          <p>Full Stack Developer • 2019 – 2022</p>
-          <p>Built scalable web apps with React and Node.js, improving uptime by 25%.</p>
-        </div>
-      </div>
-
-      <div class="experience-item">
-        <div class="logo"><img src="company3-logo.png" alt="Galactic Innovations"></div>
-        <div class="details">
-          <h4>Galactic Innovations</h4>
-          <p>Intern • 2018 – 2019</p>
-          <p>Assisted in prototyping embedded systems and automating testing workflows.</p>
+          <h3>Orbital Dynamics Inc.</h3>
+          <p>Systems Developer — 2018–2021</p>
+          <p>Built automation tools and analytics for aerospace mission operations.</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h3>Projects</h3>
-      <ul>
-        <li><strong>Orbital Path Simulator</strong> — Built a 3D orbital physics engine using WebGL and Three.js.</li>
-        <li><strong>FleetAI</strong> — Created a fleet management dashboard using Python Flask and React.</li>
-      </ul>
+      <h2>Skills</h2>
+      <p>C++, C#, Python, Java, Qt, Git, MySQL</p>
+      <p>Linux, Windows, Agile Development, Embedded Systems</p>
     </section>
 
     <section>
-      <h3>Contact</h3>
-      <p>Email: <a href="mailto:dustinwhite@email.com">dustinwhite@email.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/dustinwhite">linkedin.com/in/dustinwhite</a></p>
-      <p>GitHub: <a href="https://github.com/dustinwhite">github.com/dustinwhite</a></p>
+      <h2>Projects</h2>
+      <p><strong>Autonomous Drone Swarm:</strong> Created control algorithms for synchronized flight.</p>
+      <p><strong>Game Physics Engine:</strong> Designed real-time physics engine in C++.</p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <p>B.S. in Computer Engineering — University of Florida, 2018</p>
     </section>
   </main>
 
   <footer>
-    © 2025 Dustin White • Designed with ❤️ and starlight
+    <p>© 2025 Dustin White | <a href="#" style="color:#0ff; text-decoration:none;">LinkedIn</a> | <a href="#" style="color:#0ff; text-decoration:none;">GitHub</a></p>
   </footer>
 
   <script>
-    const starsContainer = document.querySelector('.stars');
-    const numStars = 120;
-    for (let i = 0; i < numStars; i++) {
-      const star = document.createElement('span');
-      const size = Math.random() * 2 + 1 + 'px';
-      star.style.width = size;
-      star.style.height = size;
+    const starContainer = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.width = star.style.height = Math.random() * 3 + 'px';
       star.style.top = Math.random() * 100 + '%';
       star.style.left = Math.random() * 100 + '%';
-      star.style.animationDelay = Math.random() * 3 + 's';
-      starsContainer.appendChild(star);
+      star.style.animationDuration = 2 + Math.random() * 4 + 's';
+      starContainer.appendChild(star);
     }
   </script>
 </body>
 </html>
-
-
-
