@@ -1,160 +1,206 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dustin White — Resume & Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dustin White - Portfolio</title>
   <style>
-    :root{
-      --accent: #7fffd4;
-      --accent-2: #9b7bff;
-      --card-border: rgba(255,255,255,0.08);
-      --maxw: 960px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, sans-serif;
-      color:#eaeef8;
-      background: radial-gradient(ellipse at 20% 10%, rgba(139,92,246,0.08) 0%, transparent 20%),
-                  radial-gradient(ellipse at 80% 90%, rgba(127,255,212,0.03) 0%, transparent 20%),
-                  radial-gradient(circle at 50% 50%, #020024, #090979 30%, #000000 90%);
-      background-attachment: fixed;
-      overflow-x:hidden;
-      padding:40px 20px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+      color: white;
+      overflow-x: hidden;
     }
 
-    /* animated starfield */
-    .starfield{
-      position:fixed;
-      top:0;left:0;width:100%;height:100%;
-      background:transparent;
-      overflow:hidden;
-      z-index:0;
-      pointer-events:none;
+    /* Star field */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: -1;
+      overflow: hidden;
     }
-    .star{
-      position:absolute;
-      width:2px;height:2px;
-      background:white;
-      opacity:0.8;
-      border-radius:50%;
-      animation: twinkle 5s infinite ease-in-out;
+
+    .stars span {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: twinkle 4s infinite ease-in-out;
     }
+
     @keyframes twinkle {
-      0%,100%{opacity:0.2;}
-      50%{opacity:1;}
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
     }
 
-    /* Desktop enhancement */
-    @media (min-width: 880px) {
-      .star {
+    /* Brighter stars for desktop */
+    @media (min-width: 768px) {
+      .stars span {
         width: 3px;
         height: 3px;
-        opacity: 0.95;
-        box-shadow: 0 0 6px 2px rgba(255,255,255,0.4);
-      }
-      body {
-        background: radial-gradient(ellipse at 20% 10%, rgba(155,123,255,0.12) 0%, transparent 25%),
-                    radial-gradient(ellipse at 80% 90%, rgba(127,255,212,0.08) 0%, transparent 25%),
-                    radial-gradient(circle at 50% 50%, #050014, #0a007a 40%, #000000 95%);
+        opacity: 0.9;
+        box-shadow: 0 0 6px white;
       }
     }
 
-    .sheet{
-      position:relative;z-index:1;width:100%;max-width:var(--maxw);
-      display:grid;grid-template-columns:320px 1fr;gap:28px;
-      background:rgba(0,0,0,0.5);
-      border:1px solid var(--card-border);
-      border-radius:18px;padding:26px;
-      box-shadow:0 10px 40px rgba(0,0,0,0.6);
-      backdrop-filter:blur(8px);
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
     }
 
-    .panel{padding:18px;background:rgba(255,255,255,0.05);border-radius:12px;}
-    .photo{width:100%;height:220px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#05060a;font-weight:800;font-size:28px;margin-bottom:16px;}
-    .name{font-size:22px;font-weight:800}
-    .title{color:rgba(255,255,255,0.7);margin-top:4px;font-weight:600}
-    .contact{margin-top:12px;font-size:13px;color:rgba(255,255,255,0.75)}
-    .contact a{color:var(--accent);text-decoration:none}
-    .skill-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-    .tag{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.05);font-size:13px}
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.3rem;
+      color: #00bfff;
+    }
 
-    .main{padding:18px 8px;}
-    .summary{background:rgba(255,255,255,0.05);padding:16px;border-radius:12px;}
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-top: 0;
+      color: #9fd5ff;
+    }
 
-    .job{margin-top:16px;padding:14px;border-radius:12px;background:rgba(255,255,255,0.03)}
-    .job h4{margin:0;font-weight:700}
-    .job .muted{color:rgba(255,255,255,0.6);font-size:13px}
-    .bullets{margin:8px 0 0 0;padding-left:18px}
+    section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+    }
 
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
-    .project{padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.02)}
-    .project h5{margin:0 0 6px 0}
-    .project p{margin:0;font-size:13px;color:rgba(255,255,255,0.7)}
+    h3 {
+      color: #00bfff;
+      margin-bottom: 10px;
+    }
 
-    @media(max-width:880px){.sheet{grid-template-columns:1fr;}}
+    .experience {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .job {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .job-logo {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    }
+
+    .job-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .job-details {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 0.9rem;
+      color: #88bde6;
+    }
   </style>
 </head>
 <body>
-  <div class="starfield" id="starfield"></div>
+  <div class="stars"></div>
+  <header>
+    <h1>Dustin White</h1>
+    <h2>Software Engineer • Innovator • Problem Solver</h2>
+  </header>
 
-  <div class="sheet">
-    <aside class="panel">
-      <div class="photo">DW</div>
-      <div class="name">Dustin White</div>
-      <div class="title">Software Engineer • Systems & Game Dev</div>
-      <div class="contact">
-        <div>Email: <a href="mailto:dustin.white@example.com">dustin.white@example.com</a></div>
-        <div>Phone: (555) 555-5555</div>
-        <div>Location: New York, NY</div>
+  <section>
+    <h3>Experience</h3>
+    <div class="experience">
+      <div class="job">
+        <div class="job-logo">
+          <img src="company1-logo.png" alt="Company 1 Logo">
+        </div>
+        <div class="job-details">
+          <h4>Lockheed Martin</h4>
+          <p>Software Engineer • 2022 – Present</p>
+          <p>Developed real-time simulation tools and optimized aerospace data systems using C++ and Python.</p>
+        </div>
       </div>
-      <div class="skill-tags">
-        <span class="tag">C++</span>
-        <span class="tag">C#</span>
-        <span class="tag">Python</span>
-        <span class="tag">Qt</span>
-        <span class="tag">Linux</span>
-        <span class="tag">Git</span>
-      </div>
-    </aside>
 
-    <main class="main">
-      <section class="summary">
-        <h2 style="margin:0">Product-minded software engineer</h2>
-        <p>Builds reliable systems and clean front-ends for high-performance software. Focused on maintainability, UX, and graphics.</p>
-      </section>
-      <article class="job">
-        <h4>Senior Software Engineer — Orion Games</h4>
-        <div class="muted">2021 — Present</div>
-        <ul class="bullets">
-          <li>Engine-level performance improvements: -35% frame time variance.</li>
-          <li>Networking layer for multiplayer features (UDP + custom reliability).</li>
-        </ul>
-      </article>
-      <section class="projects">
-        <div class="project"><h5>Procedural Planet Generator</h5><p>GPU-accelerated terrain synthesis with OpenGL.</p></div>
-        <div class="project"><h5>Multiplayer Framework</h5><p>Reliable UDP + lobby system using C++.</p></div>
-      </section>
-    </main>
-  </div>
+      <div class="job">
+        <div class="job-logo">
+          <img src="company2-logo.png" alt="Company 2 Logo">
+        </div>
+        <div class="job-details">
+          <h4>TechNova Labs</h4>
+          <p>Full Stack Developer • 2019 – 2022</p>
+          <p>Built and maintained scalable web applications with React and Node.js, improving system uptime by 25%.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-logo">
+          <img src="company3-logo.png" alt="Company 3 Logo">
+        </div>
+        <div class="job-details">
+          <h4>Galactic Innovations</h4>
+          <p>Intern • 2018 – 2019</p>
+          <p>Assisted in prototyping embedded systems and helped automate testing workflows in C and Python.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Projects</h3>
+    <ul>
+      <li>Orbital Path Simulator — Built a 3D orbital physics engine using WebGL and Three.js</li>
+      <li>FleetAI — Created a fleet management dashboard using Python Flask and React</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Contact</h3>
+    <p>Email: dustinwhite@email.com</p>
+    <p>LinkedIn: linkedin.com/in/dustinwhite</p>
+    <p>GitHub: github.com/dustinwhite</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Dustin White • Designed with ❤️ and starlight</p>
+  </footer>
 
   <script>
-    const container=document.getElementById('starfield');
-    const count=window.innerWidth>880?250:150;
-    for(let i=0;i<count;i++){
-      const s=document.createElement('div');
-      s.className='star';
-      s.style.top=Math.random()*100+'%';
-      s.style.left=Math.random()*100+'%';
-      s.style.width=s.style.height=Math.random()*2+'px';
-      s.style.animationDelay=(Math.random()*5)+'s';
-      container.appendChild(s);
+    const starsContainer = document.querySelector('.stars');
+    const numStars = 100;
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('span');
+      const size = Math.random() * 2 + 1 + 'px';
+      star.style.width = size;
+      star.style.height = size;
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 4 + 's';
+      starsContainer.appendChild(star);
     }
   </script>
 </body>
