@@ -311,8 +311,8 @@
 
     icons.forEach((icon, index) => {
       const angle = (2 * Math.PI / total) * index;
-      const x = radius * Math.cos(angle);
-      const y = radius * Math.sin(angle);
+      const x = radius * Math.cos(angle) * 1.4;
+      const y = radius * Math.sin(angle) * 1.4;
       icon.style.left = `calc(50% + ${x}px - 25px)`;
       icon.style.top = `calc(50% + ${y}px - 25px)`;
       // Add rotation opposite to parent so icon stays upright
@@ -342,3 +342,4 @@
   </script>
 </body>
 </html>
+
