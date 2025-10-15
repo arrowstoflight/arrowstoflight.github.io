@@ -291,55 +291,43 @@
     <p>© 2025 Dustin White | <a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
   </footer>
 
-  <script>
-    // Stars
-    const starContainer = document.getElementById('stars');
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.width = star.style.height = Math.random() * 3 + 'px';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.animationDuration = 2 + Math.random() * 4 + 's';
-      starContainer.appendChild(star);
-    }
+<script>
+  // Orbit icons around name, always upright
+  const icons = document.querySelectorAll('#skills-circle i');
+  const radius = 175; // distance from name
+  const total = icons.length;
 
-    // Orbit icons around name, always upright
-    const icons = document.querySelectorAll('#skills-circle i');
-    const radius = 175; // distance from name
-    const total = icons.length;
+  function positionIcons() {
+    const isMobile = window.innerWidth <= 768; // adjust breakpoint if needed
+    const yMultiplier = isMobile ? 1 : 1.5;   // multiply y only on desktop
 
     icons.forEach((icon, index) => {
       const angle = (2 * Math.PI / total) * index;
-      const x = radius * Math.cos(angle) * 1.4;
-      const y = radius * Math.sin(angle) * 1.4;
+      const x = radius * Math.cos(angle);
+      const y = radius * Math.sin(angle) * yMultiplier;
       icon.style.left = `calc(50% + ${x}px - 25px)`;
       icon.style.top = `calc(50% + ${y}px - 25px)`;
-      // Add rotation opposite to parent so icon stays upright
+      // Keep icons upright
       icon.style.transform = `rotate(${-angle}rad)`;
     });
+  }
 
-    // Animate rotation while keeping icons upright
-    const skillsCircle = document.getElementById('skills-circle');
-    let rotation = 0;
-    function rotateCircle() {
-      rotation += 0.002; // speed of rotation
-      skillsCircle.style.transform = `rotate(${rotation}turn)`;
-      requestAnimationFrame(rotateCircle);
-    }
-    rotateCircle();
+  positionIcons(); // initial positioning
 
-    // Scroll arrow hide/show with fade
-    const arrow = document.querySelector('.scroll-down');
-    window.addEventListener('scroll', () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 20) {
-        arrow.style.opacity = '0';
-      } else {
-        arrow.style.opacity = '1';
-      }
-    });
-  </script>
+  // Recalculate on resize
+  window.addEventListener('resize', positionIcons);
+
+  // Animate rotation while keeping icons upright
+  const skillsCircle = document.getElementById('skills-circle');
+  let rotation = 0;
+  function rotateCircle() {
+    rotation += 0.002; // speed of rotation
+    skillsCircle.style.transform = `rotate(${rotation}turn)`;
+    requestAnimationFrame(rotateCircle);
+  }
+  rotateCircle();
+</script>
 </body>
 </html>
+
 
