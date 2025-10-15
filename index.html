@@ -1,19 +1,235 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<style>
-  p {
-    text-align: center;
-  }
-  .center-text {
-    text-align: center;
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dustin White — Resume & Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent: #7fffd4; /* aquamarine */
+      --accent-2: #9b7bff;
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.03);
+      --card-border: rgba(255,255,255,0.08);
+      --radius: 14px;
+      --maxw: 960px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#eaeef8;
+      background: radial-gradient(ellipse at 20% 10%, rgba(139,92,246,0.08) 0%, transparent 20%), 
+                  radial-gradient(ellipse at 80% 90%, rgba(127,255,212,0.03) 0%, transparent 20%),
+                  #000000;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+    }
+
+    /* starfield */
+    .stars, .twinkle{
+      position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; mix-blend-mode:screen;
+    }
+    .stars::before{
+      content:""; position:absolute; inset:0; background-image: radial-gradient(2px 2px at 10% 20%, #fff 10%, transparent 11%),
+        radial-gradient(1px 1px at 30% 40%, #fff 10%, transparent 11%),
+        radial-gradient(1.2px 1.2px at 50% 80%, #fff 10%, transparent 11%),
+        radial-gradient(1px 1px at 70% 30%, #fff 10%, transparent 11%),
+        radial-gradient(1.6px 1.6px at 85% 70%, #fff 10%, transparent 11%);
+      background-size: 1000px 1000px;
+      opacity:0.9; transform:translateZ(0);
+    }
+    .twinkle::before{ content:""; position:absolute; inset:0; background-image: radial-gradient(circle at 15% 15%, rgba(255,255,255,0.9) 0px, transparent 6px), radial-gradient(circle at 85% 25%, rgba(255,255,255,0.8) 0px, transparent 5px);
+      animation: twinkle 8s linear infinite; opacity:0.22;}
+    @keyframes twinkle{ 0%{transform:scale(1)}50%{transform:scale(0.98)}100%{transform:scale(1)} }
+
+    /* container */
+    .sheet{
+      position:relative; z-index:1; width:100%; max-width:var(--maxw);
+      display:grid; grid-template-columns: 320px 1fr; gap:28px; align-items:start;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--card-border);
+      border-radius:18px; padding:26px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); backdrop-filter: blur(8px);
+      overflow:hidden;
+    }
+
+    /* left column */
+    .panel{
+      padding:18px; background: linear-gradient(180deg,var(--glass), var(--glass-2)); border-radius:12px; border:1px solid rgba(255,255,255,0.03);
+    }
+    .photo{
+      width:100%; height:220px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:flex; align-items:center; justify-content:center; color:#05060a; font-weight:800; font-size:28px; margin-bottom:16px;
+      box-shadow: 0 8px 30px rgba(123,92,255,0.12), inset 0 -6px 20px rgba(0,0,0,0.25);
+    }
+    .name{font-size:22px; font-weight:800; letter-spacing:0.4px}
+    .title{color:rgba(255,255,255,0.7); margin-top:4px; font-weight:600}
+    .contact{margin-top:12px; font-size:13px; color:rgba(255,255,255,0.75)}
+    .contact a{color:var(--accent); text-decoration:none}
+    .skill-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+    .tag{padding:8px 10px; border-radius:999px; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03); font-size:13px}
+    .section-title{margin-top:18px; font-size:12px; font-weight:700; color:var(--accent); text-transform:uppercase}
+    .cv-btn{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);cursor:pointer}
+
+    /* right column */
+    .main{
+      padding:18px 8px; overflow:hidden;
+    }
+    .summary{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.02);}
+
+    .job{margin-top:16px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); border:1px solid rgba(255,255,255,0.02)}
+    .job h4{margin:0;font-weight:700}
+    .job .muted{color:rgba(255,255,255,0.6); font-size:13px}
+    .bullets{margin:8px 0 0 0; padding-left:18px}
+
+    .projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:14px}
+    .project{padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03); background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+    .project h5{margin:0 0 6px 0}
+    .project p{margin:0;font-size:13px;color:rgba(255,255,255,0.7)}
+
+    .education, .links{margin-top:16px}
+
+    /* footer */
+    .footer{margin-top:16px;padding:10px;border-radius:10px;text-align:center;color:rgba(255,255,255,0.6); font-size:13px}
+
+    /* responsive */
+    @media (max-width:880px){
+      .sheet{grid-template-columns:1fr;}
+      .photo{height:180px}
+    }
+
+    /* subtle neon accent lines */
+    .neon-top{position:absolute; left:-40px; top:-40px; width:140%; height:220px; background:linear-gradient(90deg, transparent, rgba(127,255,212,0.02) 40%, rgba(155,123,255,0.02) 60%, transparent); transform:rotate(-4deg); pointer-events:none}
+
+  </style>
 </head>
 <body>
+  <div class="stars"></div>
+  <div class="twinkle"></div>
+  <div class="sheet">
+    <div class="neon-top" aria-hidden></div>
 
-<p>My Name is Dustin.</p>
-<div class="center-text">I am a full life cycle software engineer.</div>
+    <aside class="panel">
+      <div class="photo">DW</div>
+      <div class="name">Dustin White</div>
+      <div class="title">Software Engineer • Systems & Game Dev</div>
 
+      <div class="contact">
+        <div>Email: <a href="mailto:dustin.white@example.com">dustin.white@example.com</a></div>
+        <div>Phone: (555) 555-5555</div>
+        <div>Location: New York, NY</div>
+        <div style="margin-top:8px"><a href="#portfolio">Portfolio</a> · <a href="#projects">Projects</a> · <a href="#contact">Contact</a></div>
+      </div>
+
+      <div class="section-title">Skills</div>
+      <div class="skill-tags">
+        <span class="tag">C++</span>
+        <span class="tag">C#</span>
+        <span class="tag">Python</span>
+        <span class="tag">Qt</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Git</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Agile</span>
+      </div>
+
+      <div class="section-title">Education</div>
+      <div style="margin-top:8px">
+        <strong>B.S. Computer Science</strong><br>
+        State University — 2018
+      </div>
+
+      <div class="section-title">Languages</div>
+      <div style="margin-top:8px">English (Native) · Spanish (Conversational)</div>
+
+      <button class="cv-btn" onclick="downloadCV()">Download PDF</button>
+    </aside>
+
+    <main class="main">
+      <section class="summary">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+          <div>
+            <h2 style="margin:0; font-size:20px; letter-spacing:0.4px">Product-minded software engineer who builds reliable systems and clean front-ends.</h2>
+            <div style="color:rgba(255,255,255,0.7); margin-top:6px">I design, prototype, and ship full-stack features with an emphasis on performance, maintainability, and delightful UX. Interested in systems programming, real-time graphics, and multiplayer backend.</div>
+          </div>
+          <div style="text-align:right; min-width:120px; color:var(--accent); font-weight:700">Open to work · Remote</div>
+        </div>
+      </section>
+
+      <section style="margin-top:14px">
+        <div style="display:flex; justify-content:space-between; align-items:center">
+          <h3 style="margin:0">Experience</h3>
+          <div style="color:rgba(255,255,255,0.6); font-size:13px">10+ years</div>
+        </div>
+
+        <article class="job">
+          <h4>Senior Software Engineer — Orion Games</h4>
+          <div class="muted">2021 — Present · Remote</div>
+          <ul class="bullets">
+            <li>Led engine-level performance improvements: reduced frame time variance by 35% on target hardware.</li>
+            <li>Built networking layer for multiplayer features (UDP + custom reliability layer) used by 50k monthly players.</li>
+            <li>Mentored junior engineers and established code-review patterns that reduced regressions.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <h4>Software Engineer — AeroTech Systems</h4>
+          <div class="muted">2018 — 2021 · New York, NY</div>
+          <ul class="bullets">
+            <li>Developed backend services in Python and C++, integrating with MySQL and Redis for low-latency telemetry.</li>
+            <li>Implemented CI pipelines and automated testing that cut release time by 30%.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="projects" class="projects" aria-label="Projects">
+        <div class="project">
+          <h5>Real-time Multiplayer Framework</h5>
+          <p>Custom reliable UDP protocol, lobby + matchmaking, demo client. Tech: C++, ENet-style reliability, protobuf.</p>
+        </div>
+        <div class="project">
+          <h5>Procedural Planet Generator</h5>
+          <p>GPU-accelerated terrain synthesis with LOD streaming. Tech: OpenGL, GLSL, C++.</p>
+        </div>
+        <div class="project">
+          <h5>Internal Tooling Dashboard</h5>
+          <p>Admin dashboard for telemetry and live debugging. Tech: React, Node.js, MySQL.</p>
+        </div>
+      </section>
+
+      <section class="education">
+        <h3 style="margin-bottom:6px">Selected Education & Certifications</h3>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <div style="padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.03);">B.S. Computer Science — State University</div>
+          <div style="padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.03);">Certified Kubernetes Administrator (CKA) — 2022</div>
+        </div>
+      </section>
+
+      <section class="links">
+        <h3 style="margin-bottom:6px">Links</h3>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <a href="#" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03); text-decoration:none; color:inherit">GitHub</a>
+          <a href="#" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03); text-decoration:none; color:inherit">LinkedIn</a>
+          <a href="#" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03); text-decoration:none; color:inherit">Live demo</a>
+        </div>
+      </section>
+
+      <div class="footer">Want changes? Tell me which sections to expand, or paste your latest job bullets and I'll tailor them.</div>
+
+    </main>
+  </div>
+
+  <script>
+    // fake download action (replace with real file link in production)
+    function downloadCV(){
+      alert('Click OK to download a placeholder PDF. Replace link in HTML with a real CV file.');
+      // In a real site you could set location.href = '/assets/Dustin-White-CV.pdf'
+    }
+  </script>
 </body>
 </html>
