@@ -75,7 +75,6 @@
       margin-top: -175px;
       margin-left: -175px;
       border-radius: 50%;
-      animation: rotate 20s linear infinite;
       z-index: 0;
     }
 
@@ -91,11 +90,7 @@
       justify-content: center;
       box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
       position: absolute;
-    }
-
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      transform-origin: center center;
     }
 
     main {
@@ -269,6 +264,7 @@
   </footer>
 
   <script>
+    // Generate stars
     const starContainer = document.getElementById('stars');
     for (let i = 0; i < 100; i++) {
       const star = document.createElement('div');
@@ -280,19 +276,28 @@
       starContainer.appendChild(star);
     }
 
-    // Orbit icons around name
+    // Orbit icons around name and keep them upright
     const icons = document.querySelectorAll('#skills-circle i');
-    const radius = 150;
-    const total = icons.length;
+  const radius = 269;
+  const total = icons.length;
+  const rotationDuration = 20000; // 20s for a full orbit
+
+  function updateIcons() {
+    const now = performance.now();
+    const rotation = (now % rotationDuration) / rotationDuration * 2 * Math.PI; // circle rotation
 
     icons.forEach((icon, index) => {
-      const angle = (2 * Math.PI / total) * index;
-      const x = radius * Math.cos(angle) * 1.6;
-      const y = radius * Math.sin(angle) * 1.6;
+      const angle = (2 * Math.PI / total) * index + rotation;
+      const x = radius * Math.cos(angle);
+      const y = radius * Math.sin(angle);
       icon.style.left = `calc(50% + ${x}px - 25px)`;
       icon.style.top = `calc(50% + ${y}px - 25px)`;
+      icon.style.transform = `rotate(0deg)`; // icons stay upright
     });
+      requestAnimationFrame(updateIcons);
+    }
+
+    updateIcons();
   </script>
 </body>
 </html>
-
