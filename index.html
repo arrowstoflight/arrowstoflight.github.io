@@ -99,7 +99,7 @@
       overflow: hidden;
       flex-shrink: 0;
       margin-right: 15px;
-      background-color: #000; /* Ensures black background */
+      background-color: #000;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -122,6 +122,22 @@
       font-size: 0.9rem;
     }
 
+    .skills-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .skills-icons img {
+      width: 50px;
+      height: 50px;
+      background: #000;
+      border-radius: 8px;
+      padding: 5px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+
     footer {
       text-align: center;
       padding: 30px;
@@ -142,7 +158,7 @@
     <section>
       <h2>Experience</h2>
       <div class="job">
-        <div class="logo"><img src="https://gpm.nasa.gov/sites/default/files/NASA-Logo-Large.jpg" alt="NASA Meatball" /></div>
+        <div class="logo"><img src="https://gpm.nasa.gov/sites/default/files/NASA-Logo-Large.jpg" alt="Company 1 Logo" /></div>
         <div class="details">
           <h3>Lockheed Martin</h3>
           <p>Software Engineer — 2021–Present</p>
@@ -151,9 +167,9 @@
       </div>
 
       <div class="job">
-        <div class="logo"><img src="https://i0.wp.com/spacenews.com/wp-content/uploads/2022/08/United_Launch_Alliance-Logo.wine_.png?fit=3000%2C2000&ssl=1" alt="United Launch Alliance" /></div>
+        <div class="logo"><img src="https://i0.wp.com/spacenews.com/wp-content/uploads/2022/08/United_Launch_Alliance-Logo.wine_.png?fit=3000%2C2000&ssl=1" alt="Company 2 Logo" /></div>
         <div class="details">
-          <h3>United Launch Alliance</h3>
+          <h3>Orbital Dynamics Inc.</h3>
           <p>Systems Developer — 2018–2021</p>
           <p>Built automation tools and analytics for aerospace mission operations.</p>
         </div>
@@ -162,8 +178,15 @@
 
     <section>
       <h2>Skills</h2>
-      <p>C++, C#, Python, Java, Qt, Git, MySQL</p>
-      <p>Linux, Windows, Agile Development, Embedded Systems</p>
+      <div class="skills-icons">
+        <img src="icons/cpp.png" alt="C++" title="C++" />
+        <img src="icons/python.png" alt="Python" title="Python" />
+        <img src="icons/java.png" alt="Java" title="Java" />
+        <img src="icons/csharp.png" alt="C#" title="C#" />
+        <img src="icons/git.png" alt="Git" title="Git" />
+        <img src="icons/mysql.png" alt="MySQL" title="MySQL" />
+        <img src="icons/qt.png" alt="Qt" title="Qt" />
+      </div>
     </section>
 
     <section>
