@@ -59,7 +59,7 @@
       z-index: 2;
     }
 
-    /* Skill icons orbiting around name, always upright */
+    /* Orbiting skill icons */
     .skills-circle {
       position: absolute;
       top: 50%;
@@ -69,7 +69,7 @@
       margin-top: -150px;
       margin-left: -150px;
       border-radius: 50%;
-      animation: rotate 20s linear infinite;
+      animation: rotate-circle 20s linear infinite;
     }
 
     .skills-circle i {
@@ -84,11 +84,20 @@
       justify-content: center;
       box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
       position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: 0 -150px;
+      animation: rotate-counter 20s linear infinite;
     }
 
-    @keyframes rotate {
+    @keyframes rotate-circle {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+
+    @keyframes rotate-counter {
+      0% { transform: rotate(0deg) translate(0, -150px) rotate(0deg); }
+      100% { transform: rotate(-360deg) translate(0, -150px) rotate(360deg); }
     }
 
     main {
@@ -194,7 +203,7 @@
     <h1>Dustin White</h1>
     <p>Software Engineer | Problem Solver | Innovator</p>
 
-    <div class="skills-circle" id="skills-circle">
+    <div class="skills-circle">
       <i class="devicon-cplusplus-plain"></i>
       <i class="devicon-c-original"></i>
       <i class="devicon-csharp-plain"></i>
@@ -265,19 +274,6 @@
       star.style.animationDuration = 2 + Math.random() * 4 + 's';
       starContainer.appendChild(star);
     }
-
-    // Orbit icons around name, always facing user
-    const icons = document.querySelectorAll('#skills-circle i');
-    const radius = 150;
-    const total = icons.length;
-
-    icons.forEach((icon, index) => {
-      const angle = (2 * Math.PI / total) * index;
-      const x = radius * Math.cos(angle);
-      const y = radius * Math.sin(angle);
-      icon.style.left = `calc(50% + ${x}px - 25px)`; // center offset
-      icon.style.top = `calc(50% + ${y}px - 25px)`;
-    });
   </script>
 </body>
 </html>
