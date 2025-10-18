@@ -4,7 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dustin White's Portfolio</title>
+  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
+    html {
+      scroll-snap-type: y mandatory;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -47,6 +53,7 @@
       text-align: center;
       position: relative;
       z-index: 1;
+      scroll-snap-align: start;
     }
 
     header h1 {
@@ -93,13 +100,41 @@
       transform-origin: center center;
     }
 
+    /* Scroll Arrow Styling */
+    .scroll-arrow {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: #0ff;
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-arrow.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+
     main {
       display: flex;
       flex-direction: column;
       gap: 30px;
       max-width: 900px;
       margin: 0 auto;
-      padding: 40px 20px 80px;
+      padding: 20px 20px 80px;
     }
 
     section {
@@ -109,6 +144,8 @@
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      scroll-snap-align: start;
+      box-sizing: border-box;
     }
 
     section:hover {
@@ -205,6 +242,7 @@
       padding: 30px;
       font-size: 0.9rem;
       color: #777;
+      scroll-snap-align: start;
     }
 
     a {
@@ -224,7 +262,6 @@
       height: 315px;
     }
   </style>
-  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body>
   <div class="stars" id="stars"></div>
@@ -232,7 +269,6 @@
   <header>
     <h1>Dustin White</h1>
     <p>Software Engineer</p>
-
     <div class="skills-circle" id="skills-circle">
       <i class="devicon-cplusplus-plain"></i>
       <i class="devicon-c-original"></i>
@@ -244,12 +280,14 @@
       <i class="devicon-github-original"></i>
       <i class="devicon-linux-plain"></i>
     </div>
+    <div class="scroll-arrow" id="scroll-arrow">
+      <i class="fas fa-chevron-down"></i>
+    </div>
   </header>
 
   <main>
     <section>
       <h2>Experience</h2>
-
       <!-- NASA -->
       <div class="job">
         <div class="logo"><img src="https://gpm.nasa.gov/sites/default/files/NASA-Logo-Large.jpg" alt="NASA Logo" /></div>
@@ -259,10 +297,8 @@
           <p>Lead remote software developer for Artemis II mission for the Thermal Control System</p>
         </div>
       </div>
-
       <!-- Embedded video -->
       <iframe src="https://www.youtube.com/embed/zctTKdQcmVA?si=o4W4oS9tne_uwTey" title="NASA Artemis Video" allowfullscreen></iframe>
-
       <!-- ULA -->
       <div class="job">
         <div class="logo"><img src="https://i0.wp.com/spacenews.com/wp-content/uploads/2022/08/United_Launch_Alliance-Logo.wine_.png?fit=3000%2C2000&ssl=1" alt="ULA Logo" /></div>
@@ -296,35 +332,35 @@
     </section>
 
     <section>
-  	<h2>Education</h2>
-    <div class="job">
-    <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_University_of_Central_Florida.svg/1200px-Seal_of_the_University_of_Central_Florida.svg.png" alt="UCF Logo" />
-    </div>
-    <div class="details">
-      <h3>University of Central Florida</h3>
-      <p>B.S. in Computer Science — 2020</p>
-    </div>
-    </div>
+      <h2>Education</h2>
+      <div class="job">
+        <div class="logo">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_University_of_Central_Florida.svg/1200px-Seal_of_the_University_of_Central_Florida.svg.png" alt="UCF Logo" />
+        </div>
+        <div class="details">
+          <h3>University of Central Florida</h3>
+          <p>B.S. in Computer Science — 2020</p>
+        </div>
+      </div>
     </section>
 
-<section>
-  <h2>Awards</h2>
-  <div class="job">
-    <div class="logo">
-      <img src="https://iaaspace.org/wp-content/uploads/2024/11/IAA-LOGO-PIONEER-LightBlue-2.png" alt="IAA" />
-    </div>
-    <div class="details">
-      <h3>IAA 2023 Laurels for Team Achievement Award</h3>
-      <p>
-        <a href="https://www.nasa.gov/missions/artemis/artemis-i-team-receives-laurels-award-for-team-achievement/">
-          Artemis I Team — NASA
-        </a>
-      </p>
-    </div>
-  </div>
-</section>
-
+    <section>
+      <h2>Awards</h2>
+      <div class="job">
+        <div class="logo">
+          <img src="https://iaaspace.org/wp-content/uploads/2024/11/IAA-LOGO-PIONEER-LightBlue-2.png" alt="IAA" />
+        </div>
+        <div class="details">
+          <h3>International Academy of Astronautics</h3>
+          <p>2023 Laurels for Team Achievement Award</p>
+          <p>
+            <a href="https://www.nasa.gov/missions/artemis/artemis-i-team-receives-laurels-award-for-team-achievement/">
+              NASA's Artemis I Team
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -365,6 +401,21 @@
     }
 
     updateIcons();
+
+    // Scroll Arrow Visibility
+    const scrollArrow = document.getElementById('scroll-arrow');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        scrollArrow.classList.add('hidden');
+      } else {
+        scrollArrow.classList.remove('hidden');
+      }
+    });
+
+    // Smooth scroll to first section on arrow click
+    scrollArrow.addEventListener('click', () => {
+      document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
