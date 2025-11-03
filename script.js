@@ -43,5 +43,12 @@ window.addEventListener('scroll', () => {
 
 // Smooth scroll to first section
 scrollArrow.addEventListener('click', () => {
-  document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
+  const mainSection = document.querySelector('main');
+  const top = mainSection.getBoundingClientRect().top + window.scrollY;
+
+  window.scrollTo({
+    top,
+    behavior: 'smooth'
+  });
 });
+
