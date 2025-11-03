@@ -52,3 +52,23 @@ scrollArrow.addEventListener('click', () => {
   });
 });
 
+
+// Images
+const modal = document.getElementById('imgModal');
+const modalImg = document.getElementById('modalImg');
+const closeBtn = document.querySelector('.close');
+
+document.querySelectorAll('.clickable-img').forEach(img => {
+  img.addEventListener('click', () => {
+    modal.classList.add('show'); // ✅ only show modal when clicked
+    modalImg.src = img.src;
+  });
+});
+
+closeBtn.addEventListener('click', () => {
+  modal.classList.remove('show'); // ✅ hide modal when X clicked
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) modal.classList.remove('show'); // close on background click
+});
