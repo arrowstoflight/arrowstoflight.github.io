@@ -1,5 +1,15 @@
-html {
-  scroll-snap-type: y mandatory;
+/* Mobile styles (screens up to 767px wide) */
+@media (max-width: 767px) {
+    html {
+        scroll-snap-type: y proximity;
+    }
+}
+
+/* Desktop styles (screens 768px and wider) */
+@media (min-width: 768px) {
+    html {
+        scroll-snap-type: y mandatory;
+    }
 }
 
 body {
@@ -311,3 +321,4 @@ iframe {
 .close:hover {
   transform: scale(1.1);
 }
+
