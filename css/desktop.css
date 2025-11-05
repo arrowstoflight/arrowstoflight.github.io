@@ -1,25 +1,5 @@
-/* Mobile styles (screens up to 767px wide) */
-@media (max-width: 767px) {
-    html {
-        scroll-snap-type: y proximity;
-    }
-}
-
-/* Desktop styles (screens 768px and wider) */
-@media (min-width: 768px) {
-    html {
-        scroll-snap-type: y mandatory;
-    }
-
-    @keyframes bounce {
-        0%, 100% {
-            transform: translateX(-50%) translateY(0);
-        }
-
-        50% {
-            transform: translateX(-50%) translateY(-10px);
-        }
-    }
+html {
+    scroll-snap-type: y mandatory;
 }
 
 body {
