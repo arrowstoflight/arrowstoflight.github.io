@@ -97,13 +97,14 @@ header {
 /* Scroll Arrow */
 .scroll-arrow {
     position: absolute;
-    bottom: 30px;
+    bottom: calc(20px + env(safe-area-inset-bottom));
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.5rem;
     color: #7738ff;
     cursor: pointer;
     animation: bounce 2s infinite;
+    z-index: 1;
 }
 
 @keyframes bounce {
