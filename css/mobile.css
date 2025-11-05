@@ -8,7 +8,6 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #fff;
   background: radial-gradient(circle at top, #0a0a1a 0%, #000 100%);
-  overflow-x: hidden;
   position: relative;
   scroll-behavior: smooth;
 }
