@@ -10,6 +10,8 @@ body {
   color: #fff;
   background: radial-gradient(circle at top, #0a0a1a 0%, #000 100%);
   position: relative;
+  scroll-snap-type: none;
+  -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 }
 
