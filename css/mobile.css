@@ -100,7 +100,7 @@ header p {
   left: 50%;
   transform: translateX(-50%);
   font-size: 2rem;
-  color: #5100ff;
+  color: #7738ff;
   cursor: pointer;
   transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 2;
@@ -143,7 +143,7 @@ h2 {
   border-bottom: 2px solid rgba(0, 255, 255, 0.4);
   padding-bottom: 10px;
   margin-bottom: 20px;
-  color: #5100ff;
+  color: #7738ff;
   text-transform: uppercase;
   font-size: 1.3rem;
 }
@@ -202,7 +202,7 @@ h2 {
   content: '★';
   position: absolute;
   left: 0;
-  color: #5100ff;
+  color: #7738ff;
 }
 
 /* Skills Grid */
@@ -223,7 +223,7 @@ h2 {
 
 .skill-item i {
   font-size: 40px;
-  color: #5100ff;
+  color: #7738ff;
 }
 
 /* Project Screenshots */
@@ -247,7 +247,7 @@ footer {
 }
 
 a {
-  color: #5100ff;
+  color: #7738ff;
   text-decoration: none;
 }
 
